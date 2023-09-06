@@ -1,0 +1,28 @@
+import random
+
+def generate_random_word():
+    word_list = ["apple", "banana", "cherry", "orange", "grape", "melon"]
+    return random.choice(word_list)
+
+def check_guess(word, guess):
+    if len(guess) != len(word):
+        return False
+    for i in range(len(guess)):
+        if guess[i] != word[i]:
+            return False
+    return True
+
+def play_wordle():
+    word = generate_random_word()
+    attempts = 0
+    while True:
+        print(f"\nAttempt #{attempts + 1}")
+        guess = input("Enter your guess: ")
+        if check_guess(word, guess):
+            print("You guessed the word correctly!")
+            break
+        else:
+            print("Incorrect guess. Try again.")
+            attempts += 1
+
+play_wordle()
